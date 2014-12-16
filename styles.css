@@ -1,0 +1,46 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: steelblue;
+}
+
+.link-block {
+    background-color: aliceblue;
+    margin-bottom: 1px;
+    padding: 15px;
+}
+.link {
+    margin: 0;
+    font-size: 18px;
+}
+.link > a {
+    color: black;
+}
+.link > a:visited {
+    color: grey;
+    text-decoration: none;
+}
+.tweet {
+    margin: 5px 0 0 0;
+    font-size: 12px;
+}
+.tweet > a {
+    color: black;
+}
+.tweet > a:visited {
+    color: grey;
+}
+.footer {
+    color: black;
+    text-align: center;
+}
+.footer a {
+    text-decoration: none;
+    color: aliceblue;
+    font-weight: bold;
+}
+.header-image {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 50%;
+}
