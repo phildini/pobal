@@ -2,7 +2,7 @@
 
 echo "Job Starting"
 . .bash_profile
-cd /home/phildini/pebble.ink/twittering_machine/
+cd /home/phildini/pobal/
 rm tweets.json
 virtualenv .
 . bin/activate
