@@ -26,6 +26,9 @@ body {
 .tweet > a {
     color: black;
 }
+.tweet .fa-retweet {
+    color: silver;
+}
 .tweet > a:visited {
     color: grey;
 }

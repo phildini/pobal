@@ -16,7 +16,6 @@
         <link rel="icon" type="image/png" href="icons/favicon-32x32.png" sizes="32x32" />
         <link rel="icon" type="image/png" href="icons/favicon-16x16.png" sizes="16x16" />
         <link rel="icon" type="image/png" href="icons/favicon-128.png" sizes="128x128" />
-
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta description="The best links from @phildini's twitter.">
@@ -43,14 +42,14 @@
         <div class="container">
         {% for link in links %}
         <div class="link-block">
-            <p class="link"><a href="{{ link.link }}">{{ link.link_text | safe }}</a></p>
+            <p class="link"><a href="{{ link.link }}" target="_blank">{{ link.link_text | safe }}</a></p>
             <p class="tweet">{{ link.tweet_text | safe}} <a href="{{ link.tweet_link }}">>></a></p>
         </div>
         {% endfor %}
         </div>
         {% if previous %}
         <div class="link-block">
-            <a class="link" href="/{{ previous}}.html">{{ previous }}</a>
+            <p class="link"><a href="/{{ previous}}.html"><< {{ previous }}</a></p>
         </div>
         {% endif %}
         </div>

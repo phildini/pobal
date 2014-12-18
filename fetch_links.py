@@ -1,7 +1,12 @@
+from datetime import (
+    datetime,
+    timedelta,
+)
 import jinja2
 import json
 import os
 import os.path
+import pytz
 import requests
 import tweepy
 import warnings
@@ -16,6 +21,12 @@ def get_env_variable(var_name):
     except KeyError:
         error_msg = "Set the %s env variable" % var_name
         raise EnvironmentError(error_msg)
+
+
+def get_yesterday():
+    tz = pytz.timezone("America/New_York")
+    yesterday = datetime.now(tz).date() - timedelta(days=1)
+    return yesterday
 
 
 def get_sorted_status_links():
@@ -33,14 +44,12 @@ def get_sorted_status_links():
         api.home_timeline()
         statuses = [status._json for status in api.home_timeline(count=500)]
         statuses_with_links = [status for status in statuses if status['entities'] and status['entities']['urls']]
-
         for status in statuses_with_links:
             status['weight'] = float(
                 status['favorite_count']
             ) * 0.5 + float(
                 status['retweet_count']
             )
-
 
         sorted_statuses = sorted(
             statuses_with_links,
@@ -58,7 +67,6 @@ def get_sorted_status_links():
 
     link_objects_to_export = []
     links = []
-    avg = 0.0
     for status in sorted_statuses:
 
         link = status['entities']['urls'][0]['expanded_url']
@@ -67,8 +75,6 @@ def get_sorted_status_links():
             continue
         else:
             links.append(link)
-            print status['weight']
-            avg += status['weight']
         with warnings.catch_warnings():
             warnings.simplefilter("ignore")
             page = requests.get(link, verify=False)
@@ -81,13 +87,13 @@ def get_sorted_status_links():
             link_object = [{
                 'link': link,
                 'link_text': link_title,
+                'tweet_id': status['id'],
                 'tweet_text': status['text'],
                 'tweet_link': "https://www.twitter.com/%s/status/%s" % (
                     status['user']['screen_name'], status['id_str']
                 ),
             }]
             link_objects_to_export += link_object
-    print "Avg weight: %s" % (avg / len(link_objects_to_export),)
     return link_objects_to_export
 
 
@@ -98,9 +104,15 @@ def render_link_page(link_objects):
     template_vars = {
         "links": link_objects,
     }
+
+    yesterday = get_yesterday()
+    if os.path.isfile("%s.html" % (yesterday,)):
+        template_vars['previous'] = yesterday
+
     index_html_path = "%s/index.html" % (get_env_variable('TWEET_HTML_PATH'))
     with open(index_html_path, 'w') as html:
         html.write(template.render(template_vars).encode('utf-8'))
+
 
 if __name__ == "__main__":
     render_link_page(get_sorted_status_links())

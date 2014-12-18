@@ -1,5 +1,5 @@
 #!/bin/bash
 
-DATE=`date -d "yesterday" +%Y-%m-%d`
-cp $TWEET_HTML_PATH/index.html $TWEET_HTML_PATH/$DATE.html
+DATE=`TZ=America/Los_Angeles date -d "yesterday 13:00" +%Y-%m-%d`
+cp -a $TWEET_HTML_PATH/index.html $TWEET_HTML_PATH/$DATE.html
 bash generate_html.sh
