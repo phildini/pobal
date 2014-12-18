@@ -77,8 +77,11 @@ def get_sorted_status_links():
             links.append(link)
         with warnings.catch_warnings():
             warnings.simplefilter("ignore")
-            page = requests.get(link, verify=False)
-        if page.status_code == 200:
+            try:
+                page = requests.get(link, verify=False)
+            except:
+                page = None
+        if page and page.status_code == 200:
             soup = BeautifulSoup(page.text)
             try:
                 link_title = soup.title.string
