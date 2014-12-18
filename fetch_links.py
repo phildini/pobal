@@ -109,7 +109,10 @@ def render_link_page(link_objects):
     }
 
     yesterday = get_yesterday()
-    if os.path.isfile("%s.html" % (yesterday,)):
+    if os.path.isfile("%s/%s.html" % (
+        get_env_variable('TWEET_HTML_PATH'),
+        yesterday,
+    )):
         template_vars['previous'] = yesterday
 
     index_html_path = "%s/index.html" % (get_env_variable('TWEET_HTML_PATH'))
