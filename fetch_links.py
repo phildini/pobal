@@ -42,7 +42,7 @@ def get_sorted_status_links():
 
         api = tweepy.API(auth)
         api.home_timeline()
-        statuses = [status._json for status in api.home_timeline(count=500)]
+        statuses = [status._json for status in api.home_timeline(count=1000)]
         statuses_with_links = [status for status in statuses if status['entities'] and status['entities']['urls']]
         for status in statuses_with_links:
             status['weight'] = float(
