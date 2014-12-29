@@ -11,6 +11,8 @@ body {
 .link {
     margin: 0;
     font-size: 18px;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 .link > a {
     color: black;
