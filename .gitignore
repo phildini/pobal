@@ -1,4 +1,5 @@
 *.json
+local_config.ini
 
 bin/
 lib/
