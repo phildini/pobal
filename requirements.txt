@@ -3,5 +3,5 @@ MarkupSafe==0.23
 beautifulsoup4==4.3.2
 pytz==2014.10
 requests==2.5.0
-tweepy==2.3.0
 wsgiref==0.1.2
+requests-oauthlib==0.4.2

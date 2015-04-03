@@ -1,6 +1,9 @@
 *.json
+*.pyc
 local_config.ini
+local_settings.py
 
+output/
 bin/
 lib/
 include/
