@@ -6,5 +6,9 @@ else
     DATE=`TZ=America/Los_Angeles date -d "yesterday 13:00" +%Y-%m-%d`
 fi
 echo $DATE
-cp -a $TWEET_HTML_PATH/index.html $TWEET_HTML_PATH/$DATE.html
-bash $POBAL_PATH/generate_html.sh
+if [ -e $POBAL_HTML_PATH/$DATE.html ]; then
+    echo "Previous day already copied"
+else
+    cp -a $POBAL_HTML_PATH/index.html $POBAL_HTML_PATH/$DATE.html
+fi
+bash $POBAL_PATH/scripts/generate_html.sh
