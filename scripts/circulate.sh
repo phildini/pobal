@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "Job Starting"
+. .bash_profile
+
 if [ "$(uname)" == "Darwin" ]; then
     DATE=`date -v -1d '+%Y-%m-%d'`
 else
@@ -11,4 +14,17 @@ if [ -e $POBAL_HTML_PATH/$DATE.html ]; then
 else
     cp -a $POBAL_HTML_PATH/index.html $POBAL_HTML_PATH/$DATE.html
 fi
-bash $POBAL_PATH/scripts/generate_html.sh
+
+cd $POBAL_PATH
+virtualenv .
+. bin/activate
+pip install -r requirements.txt
+cd pobal
+python fetch_links.py
+if [ "$(uname)" == "Darwin" ]; then
+    cp -R ../static/. $POBAL_HTML_PATH
+else
+    cp -a $POBAL_PATH/static/. $POBAL_HTML_PATH
+fi
+deactivate
+echo "Job ending"
