@@ -126,10 +126,11 @@ def get_sorted_status_links():
 def render_link_page(link_objects):
     template_loader = jinja2.FileSystemLoader('../templates/')
     template_env = jinja2.Environment(loader=template_loader)
-    template = template_env.get_template('index.html')
+    template = template_env.get_template(config.TEMPLATE_NAME)
     template_vars = {
         "links": link_objects,
-        "stylesheet_name": settings.STYLESHEET_NAME
+        "stylesheet": config.STYLESHEET_NAME,
+        "ga_property": config.GA_PROPERTY,
     }
 
     yesterday = get_yesterday()

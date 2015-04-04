@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block header %}
+<div class="header-title">
+<svg viewBox="0 0 500 200">
+    <defs>
+        <pattern id="capitol" patternUnits="userSpaceOnUse" width="500" height="200">
+            <image xlink:href="header.jpg" width="500" height="200" preserveAspectRatio="xMidYMid slice"/>
+        </pattern>
+    </defs>
+    <text text-anchor="middle" class="title-text1" x="250" y="75" font-size="85">TECHNICAL</text>
+    <text text-anchor="middle" class="title-text2" x="250" y="160" font-size="85">MAJORITY</text>
+</svg> <a class="call-out" href="about">About</a>
+</div>
+{% endblock %}
+
+{% block extra_footer %}
+<div id="about" class="extra-footer">
+<p><span class="call-out">About:</span> links.technicalmajority.com is a collection of links pulled from the twitter accounts of individuals and organizations working to improve the quality of digital service in the government. If you think someone should be on the list of accounts that get polled, email technicalmajority@gmail.com.</p>
+</div>
+{% endblock %}

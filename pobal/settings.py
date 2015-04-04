@@ -7,4 +7,6 @@ OUTPUT_PATH = '../output'
 
 TIMEZONE = "America/New_York"
 
-STYLESHEET_NAME = "styles"
+TEMPLATE_NAME = 'pobal.html'
+STYLESHEET_NAME = 'styles.css'
+GA_PROPERTY = 'UA-36515305-6'

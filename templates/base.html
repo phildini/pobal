@@ -2,7 +2,7 @@
     <head>
         <title>Pobal</title>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,600,400' rel='stylesheet' type='text/css'>
-        <link href="{{ stylesheet_name }}" rel="stylesheet" type="text/css">
+        <link href="{{ stylesheet }}" rel="stylesheet" type="text/css">
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="icons/apple-touch-icon-57x57.png" />
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="icons/apple-touch-icon-114x114.png" />
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="icons/apple-touch-icon-72x72.png" />
@@ -27,18 +27,22 @@
         <meta property="og:description" content="The best links from @phildini's twitter." />
     </head>
     <body>
+        {% block header %}
         <div class="header">
         <img class="header-image" src="header.png"/>
         </div>
+        {% endblock %}
         <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-        ga('create', 'UA-36515305-6', 'auto');
+        ga('create', '{{ ga_property }}', 'auto');
         ga('send', 'pageview');
         </script>
+        {% block menu %}
+        {% endblock %}
         <div class="container">
         {% for link in links %}
         <div class="link-block">
@@ -53,8 +57,10 @@
         </div>
         {% endif %}
         </div>
+        {% block extra_footer %}
+        {% endblock %}
         <div class="footer">
-            <a href="http://philipjohnjames.com">PHILIP</a> MADE THIS -- INSPIRED BY <a href="http://waxy.org">ANDY</a>
+            <a href="http://philipjohnjames.com">philip</a> made this -- inspired by <a href="http://waxy.org">andy</a>
         </div>
     </body>
 </html>
