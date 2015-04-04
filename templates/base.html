@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Pobal</title>
+        <title>{{ title }}</title>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,600,400' rel='stylesheet' type='text/css'>
         <link href="{{ stylesheet }}" rel="stylesheet" type="text/css">
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="icons/apple-touch-icon-57x57.png" />
@@ -17,7 +17,7 @@
         <link rel="icon" type="image/png" href="icons/favicon-16x16.png" sizes="16x16" />
         <link rel="icon" type="image/png" href="icons/favicon-128.png" sizes="128x128" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% block social_meta %}
         <meta description="The best links from @phildini's twitter.">
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@pebbleink" />
@@ -25,6 +25,7 @@
         <meta property="og:url" content="http://pebble.ink/~phildini/" />
         <meta property="og:locale" content="en_US" />
         <meta property="og:description" content="The best links from @phildini's twitter." />
+        {% endblock %}
     </head>
     <body>
         {% block header %}

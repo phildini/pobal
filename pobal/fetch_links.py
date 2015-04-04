@@ -131,6 +131,7 @@ def render_link_page(link_objects):
         "links": link_objects,
         "stylesheet": config.STYLESHEET_NAME,
         "ga_property": config.GA_PROPERTY,
+        "title": config.TITLE
     }
 
     yesterday = get_yesterday()
