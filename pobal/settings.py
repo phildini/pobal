@@ -6,3 +6,5 @@ TWEETS_TO_FETCH = 20
 OUTPUT_PATH = '../output'
 
 TIMEZONE = "America/New_York"
+
+STYLESHEET_NAME = "styles"

@@ -1,0 +1,55 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: white;
+}
+
+.link-block {
+    background-color: whitesmoke;
+    margin-bottom: 1px;
+    padding: 15px;
+}
+.link {
+    margin: 0;
+    font-size: 18px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.link > a {
+    color: black;
+}
+.link > a:hover {
+    color: darkred;
+}
+.link > a:visited {
+    color: dimgray;
+    text-decoration: none;
+}
+.tweet {
+    margin: 5px 0 0 0;
+    font-size: 12px;
+    color: midnightblue;
+}
+.tweet > a {
+    color: darkred;
+}
+.tweet .fa-retweet {
+    color: silver;
+}
+.tweet > a:visited {
+    color: lightcoral;
+}
+.footer {
+    color: black;
+    text-align: center;
+}
+.footer a {
+    text-decoration: none;
+    color: darkred;
+    font-weight: bold;
+}
+.header-image {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 50%;
+}

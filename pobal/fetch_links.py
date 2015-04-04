@@ -129,6 +129,7 @@ def render_link_page(link_objects):
     template = template_env.get_template('index.html')
     template_vars = {
         "links": link_objects,
+        "stylesheet_name": settings.STYLESHEET_NAME
     }
 
     yesterday = get_yesterday()
