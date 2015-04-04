@@ -2,10 +2,16 @@
 
 echo "Job Starting"
 . .bash_profile
-cd /home/phildini/pobal/
+cd $POBAL_PATH
 virtualenv .
 . bin/activate
 pip install -r requirements.txt
-python pobal/fetch_links.py
-cp styles.css $TWEET_HTML_PATH
+cd pobal
+python fetch_links.py
+if [ "$(uname)" == "Darwin" ]; then
+    cp -R ../static/. $POBAL_HTML_PATH
+else
+    cp -a $POBAL_PATH/static/. $POBAL_HTML_PATH
+fi
+deactivate
 echo "Job ending"
